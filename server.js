@@ -52,6 +52,7 @@ for(var i=1; i<=10; i++){
     array.push(a);
   }
     return array;
+    console.log("hi");
   }) 
   .run(function (err, nightmare) {
       if (err) return console.log(err);
