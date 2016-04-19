@@ -50,8 +50,8 @@ function setup() {
  
 
     });
-  sendmouse(queries[queryCounter], true);
-  queryChecker();
+  // sendmouse(queries[queryCounter], true);
+  // queryChecker();
 
 }
 
