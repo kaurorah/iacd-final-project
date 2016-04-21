@@ -22,7 +22,7 @@ var rCounter;
 
 window.onload = function() {
 
-  socket = io.connect('http://localhost:8080');
+  socket = io.connect(window.location.hostname);//'http://localhost:8080');
   img = loadImage(currentImgURL);  
   image(img, imgX, imgY, img.width/2, img.height/2);
 

@@ -8,7 +8,7 @@ var Nightmare = require('nightmare');
 var storageArr = [];
 
 var server = http.createServer(handleRequest);
-server.listen(8080);
+server.listen(process.env.PORT || 8080));
 
 console.log('Server started on port 8080');
 var urlArray;
