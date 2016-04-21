@@ -2,8 +2,8 @@
 var http = require('http');
 var url = require('url');
 var path = require('path');
-var phantom=require('node-phantom');
 var fs = require('fs');
+var Nightmare = require('nightmare');
 
 var storageArr = [];
 
@@ -16,10 +16,9 @@ var urlArray;
 var image = 'http://i.imgur.com/oLmwq.png';
 var searchurl = 'https://www.bing.com/images?FORM=Z9LH';
 
-var Nightmare = require('nightmare');
 var google = new Nightmare({
-  waitTimeout: 8000, // in ms
-  show:true
+  waitTimeout: 8000 // in ms
+  // show:true
 })
 
 
