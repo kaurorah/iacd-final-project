@@ -54,7 +54,7 @@ window.onload = function() {
     });
 
 
-  $("#currentimg").on("tap",function(){
+  $("#currentimg").on("swipe",function(){
     console.log("TAP");
       urlCheck();
      $(this).attr("src", img);
