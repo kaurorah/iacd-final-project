@@ -54,10 +54,10 @@ window.onload = function() {
     });
 
 
-  $("#currentimg").on("swipe",function(){
+  $("#imgcontainer").on("swipeleft",function(){
     console.log("TAP");
       urlCheck();
-     $(this).attr("src", img);
+     $("#currentimg").attr("src", img);
   });
 
    // sendmouse(queries[queryCounter], true);
