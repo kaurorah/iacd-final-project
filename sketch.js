@@ -53,6 +53,7 @@ window.onload = function() {
         }
     });
 
+
   $("#currentimg").on("tap",function(){
     console.log("TAP");
       urlCheck();
@@ -64,70 +65,72 @@ window.onload = function() {
 
 };
 
-function preload(){
-
-  // jsondata = loadJSON("data.json", drawImage);
-  // urlArray = jsondata.data; 
-
-  // console.log("url array: "+urlArray);
-
-  console.log("PRELOAD COMPLETE");
-
-}
-
-function setup() {
-
-  createCanvas(2000, 2000);
-  imgX = 100;
-  imgY = 100; 
-  background(255);
-  console.log("SETUP COMPLETE");
 
 
-}
+// function preload(){
 
-function draw() {
-}
+//   // jsondata = loadJSON("data.json", drawImage);
+//   // urlArray = jsondata.data; 
+
+//   // console.log("url array: "+urlArray);
+
+//   console.log("PRELOAD COMPLETE");
+
+// }
+
+// function setup() {
+
+//   createCanvas(2000, 2000);
+//   imgX = 100;
+//   imgY = 100; 
+//   background(255);
+//   console.log("SETUP COMPLETE");
 
 
-function keyPressed(){
-  console.log(keyCode);
-  if(keyCode ==32) { //U - up
-    //sendmouse(queries[queryCounter], true);
-  }
-  if(keyCode ==85) { //U - up
-    drawImage();
-  } 
-}
+// }
+
+// function draw() {
+// }
+
+
+// function keyPressed(){
+//   console.log(keyCode);
+//   if(keyCode ==32) { //U - up
+//     //sendmouse(queries[queryCounter], true);
+//   }
+//   if(keyCode ==85) { //U - up
+//     drawImage();
+//   } 
+// }
 
 
 
 
-function drawImage(){
-  // if (imgLoaded == true) {
-  //   console.log("image is loaded");
-  //   // img.mask(imageMask);
-  //   image(img, 100, 100 , 200, 200);
-  //   imgLoaded = false; 
-  //     if (counter<arr.length && imgLoaded ==false){ //load a new image if there is still one in the array
-  //       img = loadImage(arr[counter]);
-  //       console.log("new url:"+arr[counter]);
-  //       console.log("counter:"+counter);
-  //       imgLoaded = true; 
-  //       counter++;
-  //     } 
-  //     else{ //ask bing for a new query 
-  //       counter = 0;
-  //       rCounter++;
-  //       imgLoaded = false; 
-  //       if (rCounter%2 ==0){
-  //         sendmouse(queries[queryCounter], false);
-  //         queryChecker();
-  //       } else sendmouse(queries[queryCounter], false);
-  //     }  
-  // }
+// function drawImage(){
+//   // if (imgLoaded == true) {
+//   //   console.log("image is loaded");
+//   //   // img.mask(imageMask);
+//   //   image(img, 100, 100 , 200, 200);
+//   //   imgLoaded = false; 
+//   //     if (counter<arr.length && imgLoaded ==false){ //load a new image if there is still one in the array
+//   //       img = loadImage(arr[counter]);
+//   //       console.log("new url:"+arr[counter]);
+//   //       console.log("counter:"+counter);
+//   //       imgLoaded = true; 
+//   //       counter++;
+//   //     } 
+//   //     else{ //ask bing for a new query 
+//   //       counter = 0;
+//   //       rCounter++;
+//   //       imgLoaded = false; 
+//   //       if (rCounter%2 ==0){
+//   //         sendmouse(queries[queryCounter], false);
+//   //         queryChecker();
+//   //       } else sendmouse(queries[queryCounter], false);
+//   //     }  
+//   // }
 
-}
+// }
 
 
 function sendmouse(keyword, newSearch) {
