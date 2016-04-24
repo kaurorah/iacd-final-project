@@ -54,11 +54,44 @@ window.onload = function() {
     });
 
   
-  $("#imgcontainer").on("tap",function(){
-      console.log("TAP");
+  $("#imgcontainer").on("swiperight",function(){
+      console.log("RIGHT");
      
 
       $("#currentimg").addClass('rotate-left').delay(700).fadeOut(1);  
+      $("#currentimg").attr("id","old-img");
+
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
+
+  $("#imgcontainer").on("swipeleft",function(){
+      console.log("LEFT");
+     
+
+      $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
+      $("#currentimg").attr("id","old-img");
+
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
+
+  $("#imgcontainer").on("swipeup",function(){
+      console.log("LEFT");
+     
+
+      $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
+      $("#currentimg").attr("id","old-img");
+
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
+
+    $("#imgcontainer").on("swipedown",function(){
+      console.log("LEFT");
+     
+
+      $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
        urlCheck();

@@ -7,7 +7,7 @@
     <script type="text/javascript" src="data.json"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src="jquery.visible.min.js"></script>
-
+<script type="text/javascript" scr= "swipe.js"></script>
 
   </head>
   <body>
@@ -42,6 +42,22 @@
       transition: 1s;
     /*   opacity: 0; */
       margin-left: -400px;
+      cursor: w-resize;
+    }
+
+     .rotate-up {
+      transform: translateY(-400px);
+      transition: 1s;
+    /*   opacity: 0; */
+      margin-top: 400px;
+      cursor: w-resize;
+    }
+
+        .rotate-down {
+      transform: translateY(400px);
+      transition: 1s;
+    /*   opacity: 0; */
+      margin-top: -400px;
       cursor: w-resize;
     }
 
