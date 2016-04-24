@@ -54,13 +54,15 @@ window.onload = function() {
     });
 
   
-  $("#imgcontainer").on("swiperight",function(){
+  $("#imgcontainer").on("tap",function(){
       console.log("TAP");
+     
+
       $("#currentimg").addClass('rotate-left').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
-      urlCheck();
-      $("#imgcontainer").append("<img src="+img+" id ='currentimg'>");
 
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
 
    // sendmouse(queries[queryCounter], true);
