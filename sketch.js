@@ -5,20 +5,47 @@ var data;
 var urlArray = [];
 
 var counter = 0;
+setCounter = 0;
 
 function urlCheck(){
  if(counter+1<urlArray.length){
   counter++;
- } else counter = 0;
+ } else{ counter = 0;
+    setCheck();
+
+ }
   img = urlArray[counter].img;
+}
+function setCheck(){
+ if(setCounter<2){
+  setCounter++;
+ } else setCounter = 0;
+  data = $.getJSON( "data.json", function(data) {
+    console.log( "success" );
+       console.log("data: "+data);
+      urlArray = data[setCounter].urls;
+      console.log("urlarray: "+urlArray);
+      img = urlArray[counter].img;
+     $("#currentimg").attr("src", img);
+
+    })
+    .done(function() {
+      console.log( "second success" );
+    })
+    .fail(function() {
+      console.log( "error" );
+    })
+    .always(function() {
+      console.log( "complete" );
+  });
 }
 
 window.onload = function() {
 
   data = $.getJSON( "data.json", function(data) {
     console.log( "success" );
-      console.log("data: "+data);
-      urlArray = data.urls;
+       console.log("data: "+data);
+      urlArray = data[0].urls;
       console.log("urlarray: "+urlArray);
       img = urlArray[counter].img;
      $("#currentimg").attr("src", img);
@@ -126,17 +153,14 @@ window.onload = function() {
 // }
 
 // function draw() {
-// }
+// // }
 
 
 // function keyPressed(){
 //   console.log(keyCode);
-//   if(keyCode ==32) { //U - up
-//     //sendmouse(queries[queryCounter], true);
+//   if(keyCode ==32) { 
 //   }
-//   if(keyCode ==85) { //U - up
-//     drawImage();
-//   } 
+
 // }
 
 
