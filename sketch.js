@@ -80,7 +80,7 @@ window.onload = function() {
       console.log("LEFT");
      
 
-      $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
+      $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
        urlCheck();
@@ -91,7 +91,7 @@ window.onload = function() {
       console.log("LEFT");
      
 
-      $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
+      $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
        urlCheck();
