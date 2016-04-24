@@ -77,7 +77,7 @@ window.onload = function() {
   });
 
   $("#imgcontainer").on("swipeup",function(){
-      console.log("LEFT");
+      console.log("UP");
      
 
       $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
@@ -88,7 +88,7 @@ window.onload = function() {
   });
 
     $("#imgcontainer").on("swipedown",function(){
-      console.log("LEFT");
+      console.log("DOWN");
      
 
       $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  

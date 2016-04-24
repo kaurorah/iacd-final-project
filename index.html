@@ -15,8 +15,15 @@
   	<img src="" id ="currentimg">
     </div>
     <style type="text/css">
-    img{
-
+    #imgcontainer{
+/*  position: relative;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;*/
     }
 
 
@@ -33,7 +40,7 @@
     .rotate-left {
       transform: rotate(30deg);
       transition: 1s;
-      margin-left: 400px;
+      margin-left: 2000px;
       cursor: e-resize;
       /*opacity: 0;*/
     }
@@ -41,23 +48,26 @@
       transform: rotate(-30deg);
       transition: 1s;
     /*   opacity: 0; */
-      margin-left: -400px;
-      cursor: w-resize;
+      margin-left: -2000px;
+      cursor: e-resize;
     }
 
-     .rotate-up {
+    .rotate-up {
+      left: 5%;
       transform: translateY(-400px);
       transition: 1s;
     /*   opacity: 0; */
-      margin-top: 400px;
-      cursor: w-resize;
+      /*margin-top: 00px;*/
+      /*cursor: w-resize;*/
     }
 
-        .rotate-down {
+    .rotate-down {
       transform: translateY(400px);
+            left: 5%;
+
       transition: 1s;
     /*   opacity: 0; */
-      margin-top: -400px;
+      margin-top: 400px;
       cursor: w-resize;
     }
 
