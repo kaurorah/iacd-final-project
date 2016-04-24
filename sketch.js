@@ -76,6 +76,7 @@ window.onload = function() {
       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
 
+ 
   $("#imgcontainer").on("swipeup",function(){
       console.log("UP");
      
@@ -97,9 +98,6 @@ window.onload = function() {
        urlCheck();
       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
-
-   // sendmouse(queries[queryCounter], true);
-  // // queryChecker();
 
 };
 
