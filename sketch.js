@@ -1,53 +1,72 @@
 var socket;
-var img, imgX, imgY;
+var img;
 
 var data;
-var urlArray = [];
+var urlArray1 = []; 
+var urlArray2 = []; //left
+var urlArray3 = []; //if you swipe right, get another 
 
-var counter = 0;
-setCounter = 0;
+var counter1 = 0;
+var counter2= 0;
+var counter3 = 0;
 
-function urlCheck(){
- if(counter+1<urlArray.length){
+var setCounter = 0;
+var idLength = 0; 
+
+function urlCheck(array, counter){
+ if(counter+1<array.length){
+  console.log("counter up");
   counter++;
  } else{ counter = 0;
-    setCheck();
-
+    // setCheck(array, counter);
  }
-  img = urlArray[counter].img;
+ console.log("updating img: "+counter);
+  img = array[counter].img;
 }
-function setCheck(){
- if(setCounter<2){
-  setCounter++;
- } else setCounter = 0;
-  data = $.getJSON( "data.json", function(data) {
-    console.log( "success" );
-       console.log("data: "+data);
-      urlArray = data[setCounter].urls;
-      console.log("urlarray: "+urlArray);
-      img = urlArray[counter].img;
-     $("#currentimg").attr("src", img);
 
-    })
-    .done(function() {
-      console.log( "second success" );
-    })
-    .fail(function() {
-      console.log( "error" );
-    })
-    .always(function() {
-      console.log( "complete" );
-  });
+
+function setCheck(array, counter){
+
+
+ // if(setCounter<idLength){
+ //  setCounter++;
+ // } else setCounter = 0;
+ //  data = $.getJSON( "data.json", function(data) {
+ //      console.log( "success" );
+ //      console.log("data: "+data);
+ //      urlArray = data[setCounter].urls;
+ //      console.log("urlarray: "+urlArray);
+ //      img = urlArray[counter].img;
+ //      $("#currentimg").attr("src", img);
+ //    })
+ //    .done(function() {
+ //      console.log( "second success" );
+ //    })
+ //    .fail(function() {
+ //      console.log( "error" );
+ //    })
+ //    .always(function() {
+ //      console.log( "complete" );
+ //  });
 }
 
 window.onload = function() {
 
   data = $.getJSON( "data.json", function(data) {
     console.log( "success" );
-       console.log("data: "+data);
-      urlArray = data[0].urls;
-      console.log("urlarray: "+urlArray);
-      img = urlArray[counter].img;
+    console.log("data: "+data);
+    idLength = data.length;
+    // setCounter();
+
+    for(var i = 0; i<data.length; i++){
+      if (i ==0) urlArray1 = data[i].urls;
+      else if (i ==1) urlArray2 = data[i].urls;
+      else urlArray3 = data[i].urls;
+    }
+      // urlArray = data[0].urls;
+      // console.log("urlarray: "+urlArray);
+      img = urlArray2[counter2].img;
+      counter2++;
      $("#currentimg").attr("src", img);
 
     })
@@ -88,7 +107,11 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-left').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-       urlCheck();
+      if(counter3+1<urlArray3.length){
+        console.log("counter up");
+        counter3++;
+       } else counter3 = 0; 
+       img = urlArray3[counter3].img;
       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
 
@@ -99,32 +122,36 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-       urlCheck();
-      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(counter2+1<urlArray2.length){
+        console.log("counter up");
+        counter2++;
+       } else counter2 = 0; 
+       img = urlArray2[counter2].img;      
+       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
 
  
-  $("#imgcontainer").on("swipeup",function(){
-      console.log("UP");
+  // $("#imgcontainer").on("swipeup",function(){
+  //     console.log("UP");
      
 
-      $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
-      $("#currentimg").attr("id","old-img");
+  //     $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
+  //     $("#currentimg").attr("id","old-img");
 
-       urlCheck();
-      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  });
+  //      urlCheck();
+  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  // });
 
-    $("#imgcontainer").on("swipedown",function(){
-      console.log("DOWN");
+  //   $("#imgcontainer").on("swipedown",function(){
+  //     console.log("DOWN");
      
 
-      $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
-      $("#currentimg").attr("id","old-img");
+  //     $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
+  //     $("#currentimg").attr("id","old-img");
 
-       urlCheck();
-      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  });
+  //      urlCheck();
+  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  // });
 
 };
 
