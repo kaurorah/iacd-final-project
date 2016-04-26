@@ -187,20 +187,23 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-       urlCheck();
-      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+       if(counter2+1<urlArray2.length){
+        counter2++;
+       } else counter2 = 0; 
+       img = urlArray2[counter2].img;      
+       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
   });
 
-    $("#imgcontainer").on("swipedown",function(){
-      console.log("DOWN");
+  //   $("#imgcontainer").on("swipedown",function(){
+  //     console.log("DOWN");
      
 
-      $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
-      $("#currentimg").attr("id","old-img");
+  //     $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
+  //     $("#currentimg").attr("id","old-img");
 
-       urlCheck();
-      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  });
+  //      urlCheck();
+  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  // });
 
 };
 
