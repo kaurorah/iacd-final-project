@@ -1,3 +1,73 @@
+
+(function() {
+    var supportTouch = $.support.touch,
+            scrollEvent = "touchmove scroll",
+            touchStartEvent = supportTouch ? "touchstart" : "mousedown",
+            touchStopEvent = supportTouch ? "touchend" : "mouseup",
+            touchMoveEvent = supportTouch ? "touchmove" : "mousemove";
+    $.event.special.swipeupdown = {
+        setup: function() {
+            var thisObject = this;
+            var $this = $(thisObject);
+            $this.bind(touchStartEvent, function(event) {
+                var data = event.originalEvent.touches ?
+                        event.originalEvent.touches[ 0 ] :
+                        event,
+                        start = {
+                            time: (new Date).getTime(),
+                            coords: [ data.pageX, data.pageY ],
+                            origin: $(event.target)
+                        },
+                        stop;
+
+                function moveHandler(event) {
+                    if (!start) {
+                        return;
+                    }
+                    var data = event.originalEvent.touches ?
+                            event.originalEvent.touches[ 0 ] :
+                            event;
+                    stop = {
+                        time: (new Date).getTime(),
+                        coords: [ data.pageX, data.pageY ]
+                    };
+
+                    // prevent scrolling
+                    if (Math.abs(start.coords[1] - stop.coords[1]) > 10) {
+                        event.preventDefault();
+                    }
+                }
+                $this
+                        .bind(touchMoveEvent, moveHandler)
+                        .one(touchStopEvent, function(event) {
+                    $this.unbind(touchMoveEvent, moveHandler);
+                    if (start && stop) {
+                        if (stop.time - start.time < 1000 &&
+                                Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
+                                Math.abs(start.coords[0] - stop.coords[0]) < 75) {
+                            start.origin
+                                    .trigger("swipeupdown")
+                                    .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+                        }
+                    }
+                    start = stop = undefined;
+                });
+            });
+        }
+    };
+    $.each({
+        swipedown: "swipeupdown",
+        swipeup: "swipeupdown"
+    }, function(event, sourceEvent){
+        $.event.special[event] = {
+            setup: function(){
+                $(this).bind(sourceEvent, $.noop);
+            }
+        };
+    });
+
+})();
+
 var socket;
 var img;
 
@@ -13,6 +83,8 @@ var counter3 = 0;
 var setCounter = 0;
 var idLength = 0; 
 
+
+
 function urlCheck(array, counter){
  if(counter+1<array.length){
   console.log("counter up");
@@ -25,32 +97,9 @@ function urlCheck(array, counter){
 }
 
 
-function setCheck(array, counter){
-
-
- // if(setCounter<idLength){
- //  setCounter++;
- // } else setCounter = 0;
- //  data = $.getJSON( "data.json", function(data) {
- //      console.log( "success" );
- //      console.log("data: "+data);
- //      urlArray = data[setCounter].urls;
- //      console.log("urlarray: "+urlArray);
- //      img = urlArray[counter].img;
- //      $("#currentimg").attr("src", img);
- //    })
- //    .done(function() {
- //      console.log( "second success" );
- //    })
- //    .fail(function() {
- //      console.log( "error" );
- //    })
- //    .always(function() {
- //      console.log( "complete" );
- //  });
-}
-
 window.onload = function() {
+
+
 
   data = $.getJSON( "data.json", function(data) {
     console.log( "success" );
@@ -123,7 +172,6 @@ window.onload = function() {
       $("#currentimg").attr("id","old-img");
 
       if(counter2+1<urlArray2.length){
-        console.log("counter up");
         counter2++;
        } else counter2 = 0; 
        img = urlArray2[counter2].img;      
@@ -131,93 +179,32 @@ window.onload = function() {
   });
 
  
-  // $("#imgcontainer").on("swipeup",function(){
-  //     console.log("UP");
+ 
+  $("#imgcontainer").on("swipeup",function(){
+      console.log("UP");
      
 
-  //     $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
-  //     $("#currentimg").attr("id","old-img");
+      $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
+      $("#currentimg").attr("id","old-img");
 
-  //      urlCheck();
-  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  // });
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
 
-  //   $("#imgcontainer").on("swipedown",function(){
-  //     console.log("DOWN");
+    $("#imgcontainer").on("swipedown",function(){
+      console.log("DOWN");
      
 
-  //     $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
-  //     $("#currentimg").attr("id","old-img");
+      $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
+      $("#currentimg").attr("id","old-img");
 
-  //      urlCheck();
-  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  // });
+       urlCheck();
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
 
 };
 
 
-
-// function preload(){
-
-//   // jsondata = loadJSON("data.json", drawImage);
-//   // urlArray = jsondata.data; 
-
-//   // console.log("url array: "+urlArray);
-
-//   console.log("PRELOAD COMPLETE");
-
-// }
-
-// function setup() {
-
-//   createCanvas(2000, 2000);
-//   imgX = 100;
-//   imgY = 100; 
-//   background(255);
-//   console.log("SETUP COMPLETE");
-
-
-// }
-
-// function draw() {
-// // }
-
-
-// function keyPressed(){
-//   console.log(keyCode);
-//   if(keyCode ==32) { 
-//   }
-
-// }
-
-
-
-
-// function drawImage(){
-//   // if (imgLoaded == true) {
-//   //   console.log("image is loaded");
-//   //   // img.mask(imageMask);
-//   //   image(img, 100, 100 , 200, 200);
-//   //   imgLoaded = false; 
-//   //     if (counter<arr.length && imgLoaded ==false){ //load a new image if there is still one in the array
-//   //       img = loadImage(arr[counter]);
-//   //       console.log("new url:"+arr[counter]);
-//   //       console.log("counter:"+counter);
-//   //       imgLoaded = true; 
-//   //       counter++;
-//   //     } 
-//   //     else{ //ask bing for a new query 
-//   //       counter = 0;
-//   //       rCounter++;
-//   //       imgLoaded = false; 
-//   //       if (rCounter%2 ==0){
-//   //         sendmouse(queries[queryCounter], false);
-//   //         queryChecker();
-//   //       } else sendmouse(queries[queryCounter], false);
-//   //     }  
-//   // }
-
-// }
 
 
 function sendmouse(keyword, newSearch) {
