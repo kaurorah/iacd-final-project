@@ -184,7 +184,7 @@ window.onload = function() {
       console.log("UP");
      
 
-      $("#currentimg").addClass('rotate-up').delay(500)  
+      $("#currentimg").addClass('rotate-up').delay(500).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
        if(counter2+1<urlArray2.length){
@@ -198,7 +198,7 @@ window.onload = function() {
       console.log("DOWN");
      
 
-      $("#currentimg").addClass('rotate-up').delay(500);  
+      $("#currentimg").addClass('rotate-down').delay(500);  
       $("#currentimg").attr("id","old-img");
 
        if(counter2+1<urlArray2.length){
