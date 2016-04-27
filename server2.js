@@ -1,4 +1,3 @@
-
 var http = require('http');
 var url = require('url');
 var path = require('path');
@@ -50,7 +49,7 @@ io.sockets.on('connection',
     console.log("We have a new client: " + socket.id);
       socket.on('mouse',
       function(data) {
-       
+      
 
         io.sockets.emit('mouse', newImage);
       }

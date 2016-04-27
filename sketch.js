@@ -156,12 +156,15 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-left').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-      if(counter3+1<urlArray3.length){
+      if(counter1+1<urlArray1.length){
         console.log("counter up");
-        counter3++;
-       } else counter3 = 0; 
-       img = urlArray3[counter3].img;
+        counter1++;
+       } else counter1 = 0; 
+       img = urlArray1[counter1].img;
       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(window.orientation != 0){
+        $("img").css({"width":"50%","height":"100%"});
+      }
   });
 
   $("#imgcontainer").on("swipeleft",function(){
@@ -174,8 +177,13 @@ window.onload = function() {
       if(counter2+1<urlArray2.length){
         counter2++;
        } else counter2 = 0; 
-       img = urlArray2[counter2].img;      
+       img = urlArray2[counter2].img; 
+
+     
        $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+        if(window.orientation != 0){
+          $("img").css({"width":"50%","height":"100%"});
+        }
   });
 
  
@@ -187,11 +195,14 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-up').delay(500).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-       if(counter2+1<urlArray2.length){
-        counter2++;
-       } else counter2 = 0; 
-       img = urlArray2[counter2].img;      
-       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(counter3+1<urlArray3.length){
+        counter3++;
+      } else counter3 = 0; 
+      img = urlArray3[counter3].img;  
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(window.orientation != 0){
+        $("img").css({"width":"50%","height":"100%"});
+      }
   });
 
     $("#imgcontainer").on("swipedown",function(){
@@ -204,20 +215,27 @@ window.onload = function() {
        if(counter2+1<urlArray2.length){
         counter2++;
        } else counter2 = 0; 
-       img = urlArray2[counter2].img;      
+       img = urlArray2[counter2].img;  
        $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+
+        if(window.orientation != 0){
+          $("img").css({"width":"50%","height":"100%"});
+        }
   });
 
-  //   $("#imgcontainer").on("swipedown",function(){
-  //     console.log("DOWN");
-     
+    $(window).on("orientationchange",function(){
+      if(window.orientation == 0) // Portrait
+      {
+        $("img").css({"width":"100%","height":"50%"});
+      }
+      else // Landscape
+      {
+        console.log("LANDSCAPE");
+        $("img").css({"width":"50%","height":"100%"});
+      }
+    });
 
-  //     $("#currentimg").addClass('rotate-down').delay(700).fadeOut(1);  
-  //     $("#currentimg").attr("id","old-img");
 
-  //      urlCheck();
-  //     $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-  // });
 
 };
 
