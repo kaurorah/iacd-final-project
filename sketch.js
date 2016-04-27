@@ -184,7 +184,21 @@ window.onload = function() {
       console.log("UP");
      
 
-      $("#currentimg").addClass('rotate-up').delay(700).fadeOut(1);  
+      $("#currentimg").addClass('rotate-up').delay(500)  
+      $("#currentimg").attr("id","old-img");
+
+       if(counter2+1<urlArray2.length){
+        counter2++;
+       } else counter2 = 0; 
+       img = urlArray2[counter2].img;      
+       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+  });
+
+    $("#imgcontainer").on("swipedown",function(){
+      console.log("DOWN");
+     
+
+      $("#currentimg").addClass('rotate-up').delay(500);  
       $("#currentimg").attr("id","old-img");
 
        if(counter2+1<urlArray2.length){
