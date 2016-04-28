@@ -112,7 +112,7 @@ window.onload = function() {
     // setCounter();
 
     // for(var i = 0; i<data.length; i++){
-      var id = getRandomInt(0,3)
+      var id = getRandomInt(0,1)
       urlArray1 = data[id].urls;
       // if (i ==0) urlArray1 = data[i].urls;
       // else if (i ==1) urlArray2 = data[i].urls;
