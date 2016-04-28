@@ -96,6 +96,10 @@ function urlCheck(array, counter){
   img = array[counter].img;
 }
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 window.onload = function() {
 
@@ -108,7 +112,7 @@ window.onload = function() {
     // setCounter();
 
     // for(var i = 0; i<data.length; i++){
-      var id = Math.floor((Math.random() * 4));
+      var id = getRandomInt(0,3)
       urlArray1 = data[id].urls;
       // if (i ==0) urlArray1 = data[i].urls;
       // else if (i ==1) urlArray2 = data[i].urls;
