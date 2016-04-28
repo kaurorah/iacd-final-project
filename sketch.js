@@ -107,13 +107,13 @@ window.onload = function() {
     idLength = data.length;
     // setCounter();
 
-    for(var i = 0; i<data.length; i++){
-      var id = Math.floor((Math.random() * 3));
+    // for(var i = 0; i<data.length; i++){
+      var id = Math.floor((Math.random() * 4));
       urlArray1 = data[id].urls;
       // if (i ==0) urlArray1 = data[i].urls;
       // else if (i ==1) urlArray2 = data[i].urls;
       // else urlArray3 = data[i].urls;
-    }
+    // }
       // urlArray = data[0].urls;
       // console.log("urlarray: "+urlArray);
       img = urlArray1[counter1].img;
