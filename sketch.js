@@ -108,14 +108,16 @@ window.onload = function() {
     // setCounter();
 
     for(var i = 0; i<data.length; i++){
-      if (i ==0) urlArray1 = data[i].urls;
-      else if (i ==1) urlArray2 = data[i].urls;
-      else urlArray3 = data[i].urls;
+      var id = Math.floor((Math.random() * 3));
+      urlArray1 = data[id].urls;
+      // if (i ==0) urlArray1 = data[i].urls;
+      // else if (i ==1) urlArray2 = data[i].urls;
+      // else urlArray3 = data[i].urls;
     }
       // urlArray = data[0].urls;
       // console.log("urlarray: "+urlArray);
-      img = urlArray2[counter2].img;
-      counter2++;
+      img = urlArray1[counter1].img;
+      counter1++;
      $("#currentimg").attr("src", img);
 
     })
@@ -174,16 +176,15 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-right').delay(700).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-      if(counter2+1<urlArray2.length){
-        counter2++;
-       } else counter2 = 0; 
-       img = urlArray2[counter2].img; 
-
-     
-       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-        if(window.orientation != 0){
-          $("img").css({"width":"50%","height":"100%"});
-        }
+     if(counter1+1<urlArray1.length){
+        console.log("counter up");
+        counter1++;
+       } else counter1 = 0; 
+       img = urlArray1[counter1].img;
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(window.orientation != 0){
+        $("img").css({"width":"50%","height":"100%"});
+      }
   });
 
  
@@ -195,10 +196,11 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-up').delay(500).fadeOut(1);  
       $("#currentimg").attr("id","old-img");
 
-      if(counter3+1<urlArray3.length){
-        counter3++;
-      } else counter3 = 0; 
-      img = urlArray3[counter3].img;  
+     if(counter1+1<urlArray1.length){
+        console.log("counter up");
+        counter1++;
+       } else counter1 = 0; 
+       img = urlArray1[counter1].img;
       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
       if(window.orientation != 0){
         $("img").css({"width":"50%","height":"100%"});
@@ -212,15 +214,15 @@ window.onload = function() {
       $("#currentimg").addClass('rotate-down').delay(500);  
       $("#currentimg").attr("id","old-img");
 
-       if(counter2+1<urlArray2.length){
-        counter2++;
-       } else counter2 = 0; 
-       img = urlArray2[counter2].img;  
-       $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
-
-        if(window.orientation != 0){
-          $("img").css({"width":"50%","height":"100%"});
-        }
+     if(counter1+1<urlArray1.length){
+        console.log("counter up");
+        counter1++;
+       } else counter1 = 0; 
+       img = urlArray1[counter1].img;
+      $("#imgcontainer").prepend("<img src="+img+" id ='currentimg'>");
+      if(window.orientation != 0){
+        $("img").css({"width":"50%","height":"100%"});
+      }
   });
 
     $(window).on("orientationchange",function(){
